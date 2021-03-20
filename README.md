@@ -16,9 +16,9 @@ The algorithm coded in the way we provide can also be seamlessly transferred to 
 ![fig1](fig1.png)
 
 - **to_float_px_func_t:** 
-A parser function that converts color from Ae pixels to doubles in range 0~1
+A parser function that converts colors from Ae pixels to doubles in range 0~1
 - **to_normal_px_func_t:**
-A parser function that converts color from doubles in 0~1 back to Ae pixels. 
+A parser function that converts colors from doubles in 0~1 back to Ae pixels. 
 - **px_equal_func_t:** (Optional)
 Comparing if two Ae pixels are equivalent. 
 - **send_px_func_t:** (Optional)
