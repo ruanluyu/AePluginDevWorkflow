@@ -33,68 +33,87 @@ Here are the full implementations of these templates.
 
 ```cpp
 template <
-  typename chT,
-  size_t max_valuei,
-  unsigned char chR = 0,
-  unsigned char chG = 1,
-  unsigned char chB = 2,
-  unsigned char chA = 3 >
-  static void to_float(double * to,
-    const void * from) {
+    typename chT,
+    size_t max_valuei,
+    unsigned char chR = 0,
+    unsigned char chG = 1,
+    unsigned char chB = 2,
+    unsigned char chA = 3>
+static void to_float(double* to, const void* from)
+{
 
-    const double maxvf = (double) max_valuei;
+    const double maxvf = (double)max_valuei;
 
-    to[0] = ((const chT * ) from)[chR] / maxvf;
-    to[1] = ((const chT * ) from)[chG] / maxvf;
-    to[2] = ((const chT * ) from)[chB] / maxvf;
-    to[3] = ((const chT * ) from)[chA] / maxvf;
-
-  }
+    to[0] = ((const chT*)from)[chR] / maxvf;
+    to[1] = ((const chT*)from)[chG] / maxvf;
+    to[2] = ((const chT*)from)[chB] / maxvf;
+    to[3] = ((const chT*)from)[chA] / maxvf;
+}
 
 template <
-  typename chT,
-  size_t max_valuei,
-  bool normalize = true,
-  unsigned char chR = 0,
-  unsigned char chG = 1,
-  unsigned char chB = 2,
-  unsigned char chA = 3 >
-  static void to_normal(void * to,
-    const double * from) {
-    const chT maxv = (chT) max_valuei;
-    const double maxvf = (double) max_valuei;
+    typename chT,
+    size_t max_valuei,
+    bool normalize = true,
+    unsigned char chR = 0,
+    unsigned char chG = 1,
+    unsigned char chB = 2,
+    unsigned char chA = 3>
+static void to_normal(void* to, const double* from)
+{
+    const chT maxv = (chT)max_valuei;
+    const double maxvf = (double)max_valuei;
     if (normalize) {
 
-      if (from[0] > 1.)((chT * ) to)[chR] = maxv;
-      else if (from[0] < 0.)((chT * ) to)[chR] = (chT) 0;
-      else((chT * ) to)[chR] = (chT)(from[0] * max_valuei + .5);
+        if (from[0] > 1.)
+            ((chT*)to)[chR] = maxv;
+        else if (from[0] < 0.)
+            ((chT*)to)[chR] = (chT)0;
+        else
+            ((chT*)to)[chR] = (chT)(from[0] * max_valuei + .5);
 
-      if (from[1] > 1.)((chT * ) to)[chG] = maxv;
-      else if (from[1] < 0.)((chT * ) to)[chG] = (chT) 0;
-      else((chT * ) to)[chG] = (chT)(from[1] * max_valuei + .5);
+        if (from[1] > 1.)
+            ((chT*)to)[chG] = maxv;
+        else if (from[1] < 0.)
+            ((chT*)to)[chG] = (chT)0;
+        else
+            ((chT*)to)[chG] = (chT)(from[1] * max_valuei + .5);
 
-      if (from[2] > 1.)((chT * ) to)[chB] = maxv;
-      else if (from[2] < 0.)((chT * ) to)[chB] = (chT) 0;
-      else((chT * ) to)[chB] = (chT)(from[2] * max_valuei + .5);
+        if (from[2] > 1.)
+            ((chT*)to)[chB] = maxv;
+        else if (from[2] < 0.)
+            ((chT*)to)[chB] = (chT)0;
+        else
+            ((chT*)to)[chB] = (chT)(from[2] * max_valuei + .5);
 
-      if (from[3] > 1.)((chT * ) to)[chA] = maxv;
-      else if (from[3] < 0.)((chT * ) to)[chA] = (chT) 0;
-      else((chT * ) to)[chA] = (chT)(from[3] * max_valuei + .5);
-    } else {
-      ((chT * ) to)[chR] = (chT)(from[0] * max_valuei);
-      ((chT * ) to)[chG] = (chT)(from[1] * max_valuei);
-      ((chT * ) to)[chB] = (chT)(from[2] * max_valuei);
-      ((chT * ) to)[chA] = (chT)(from[3] * max_valuei);
+        if (from[3] > 1.)
+            ((chT*)to)[chA] = maxv;
+        else if (from[3] < 0.)
+            ((chT*)to)[chA] = (chT)0;
+        else
+            ((chT*)to)[chA] = (chT)(from[3] * max_valuei + .5);
     }
+    else {
+        ((chT*)to)[chR] = (chT)(from[0] * max_valuei);
+        ((chT*)to)[chG] = (chT)(from[1] * max_valuei);
+        ((chT*)to)[chB] = (chT)(from[2] * max_valuei);
+        ((chT*)to)[chA] = (chT)(from[3] * max_valuei);
+    }
+}
 
-  }
-
-template < typename chT, unsigned char chA = 3 >
-  static bool px_equal(const void * px1,
-    const void * px2) {
-    if (((chT * ) px1)[chA] == (chT) 0 && ((chT * ) px2)[chA] == (chT) 0) return true;
+template <typename chT, unsigned char chA = 3>
+static bool px_equal(const void* px1, const void* px2)
+{
+    if (((chT*)px1)[chA] == (chT)0 && ((chT*)px2)[chA] == (chT)0)
+        return true;
     return memcmp(px1, px2, sizeof(chT) * 4) == 0;
-  }
+}
+
+template <typename chT>
+static void send_px(void* to, const void* from)
+{
+    memcpy(to, from, sizeof(chT) * 4);
+}
+
 ```
 
 ## 3. State all required pixel format functions in the same header file
