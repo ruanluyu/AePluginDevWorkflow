@@ -127,7 +127,7 @@ static void send_px(void* to, const void* from)
 
 ![fig4](fig4.png)
 
-## 5. Give a structure to hold all the current pixel format settings and put it to the argument to your main process algorithm
+## 5. Give a structure to hold all the current pixel format settings and put it as an argument of your main process algorithm
 
 Work in step 5 should be done in the header file. 
 
