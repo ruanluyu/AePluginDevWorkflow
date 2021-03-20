@@ -9,6 +9,8 @@ One of the toughest and boring tasks, when developing an Ae plugin, is the pixel
 
 Since it seems to have not been proposed in a standard way, we would like to provide a good way to separate the pixel format converting off the main process algorithm. 
 
+The algorithm coded in the way we provide can also be seamlessly transferred to any host(PhotoShop, OBS, etc.). The extra work of this transfer is only to add a new adaptor in step 3. 
+
 ## 1. State 4 major function types doing the pixel converting jobs
 
 ![fig1](fig1.png)
