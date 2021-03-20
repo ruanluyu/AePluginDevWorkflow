@@ -9,6 +9,8 @@ One of the toughest and boring tasks, when developing an Ae plugin, is the pixel
 
 Since yet a standard way has not appeared, we would like to provide a good way to separate the pixel format converting off the main process algorithm. 
 
+In the main process algorithm, the pixels will be converted from `ARGB 8,16,32bpc` to `RGBA 0~1 doubles`. Things will be easier with uniform-pixel-format handling. 
+
 The algorithm coded in the way we provide can also be seamlessly transferred to any host(PhotoShop, OBS, etc.). The extra work of this transfer is only to add a new adaptor in step 3 & 4. 
 
 ## 1. State 4 major function types doing the pixel converting jobs
