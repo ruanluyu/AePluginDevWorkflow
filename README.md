@@ -15,7 +15,7 @@ In the main process algorithm, the pixels will be converted from `ARGB 8,16,32bp
 
 The algorithm coded in the way we provide can also be seamlessly transferred to any host(PhotoShop, OBS, etc.). The extra work of this transfer is only to add a new adaptor in step 3 & 4. 
 
-## 1. State 4 major function types doing the pixel converting jobs
+## 1. Declare 4 major function types that perform the pixel conversion
 
 ![fig1](fig1.png)
 
