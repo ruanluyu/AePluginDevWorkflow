@@ -1,4 +1,4 @@
-# A good workflow of Ae plugin development
+# A convenient workflow of Ae plugin development
 
 by ZzStarSound(中梓星音)
 > 20 March 2021
